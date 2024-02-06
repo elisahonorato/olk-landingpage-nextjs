@@ -2,8 +2,9 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-    output: 'export',
-    trailingSlash: true,
+
+    // Optional: Set this to true if you plan to do static export
+    
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
     // trailingSlash: true,
