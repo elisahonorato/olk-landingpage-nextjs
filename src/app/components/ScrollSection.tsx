@@ -45,8 +45,8 @@ function ScrollSection() {
       <div ref={triggerRef}>
         <div ref={sectionRef} className="page-inner">
         <div className="page">
-          <div className="flex flex-row justify-between">
-            <h3 className="mt-10 font-bold text-lg ml-10">Automation of project control</h3>
+          <div className="flex flex-col justify-between ml-10">
+            <h3 className="mt-10 font-bold text-lg">Automation of project control</h3>
             <div className="rounded-lg shadow-lg bg-primary-light p-4 mt-10" style={{ width: "50%" }}>
               <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
                 <source src="./videos/screen/automated-progress.mp4" type="video/mp4" />
@@ -55,8 +55,8 @@ function ScrollSection() {
           </div>
         </div>
         <div className="page">
-          <div className="flex flex-row justify-between">
-            <h3 className="mt-10 font-bold text-lg ml-10">Concrete strength measurements</h3>
+          <div className="flex flex-col justify-between ml-10">
+            <h3 className="mt-10 font-bold text-lg">Concrete strength measurements</h3>
             <div className="rounded-lg shadow-lg bg-primary-light p-4 mt-10" style={{ width: "50%" }}>
               <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
                 <source src="./videos/screen/planification.mp4" type="video/mp4" />
@@ -65,8 +65,8 @@ function ScrollSection() {
           </div>
         </div>
         <div className="page">
-          <div className="flex flex-row justify-between">
-            <h3 className="mt-10 font-bold text-lg ml-10">Connecting jobsite data with concrete providers</h3>
+          <div className="flex flex-col justify-between ml-10">
+            <h3 className="mt-10 font-bold text-lg">Connecting jobsite data with concrete providers</h3>
             <div className="rounded-lg shadow-lg bg-primary-light p-4 mt-10" style={{ width: "50%" }}>
               <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
                 <source src="./videos/screen/resistencia.mp4" type="video/mp4" />
@@ -75,8 +75,8 @@ function ScrollSection() {
           </div>
         </div>
         <div className="page">
-          <div className="flex flex-row justify-center">
-            <h3 className="mt-10 font-bold text-lg ml-10">Monitoring of concrete curing with Cbot</h3>
+          <div className="flex flex-col justify-center ml-10">
+            <h3 className="mt-10 font-bold text-lg">Monitoring of concrete curing with Cbot</h3>
 
           </div>
         </div>
