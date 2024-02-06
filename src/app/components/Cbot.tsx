@@ -23,7 +23,7 @@ function MeshComponent(props: any) {
       })
     
     useLayoutEffect(()=> {
-        tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
+ 
     
         tl.current
         .to(mesh.current.rotation, {y: -1}, 2)
@@ -61,7 +61,7 @@ function MeshComponent(props: any) {
       </group>
     );
 }
-useGLTF.preload('./models/cbot/cbot-transformed.glb') 
+
 export default function Cbot() {
     return (
             <MeshComponent position={[0, 0, 0]} scale={[10, 10, 10]} ></MeshComponent>
@@ -69,3 +69,4 @@ export default function Cbot() {
        
     );
 }
+useGLTF.preload('./models/cbot/cbot-transformed.glb') 
