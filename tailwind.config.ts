@@ -7,6 +7,21 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      sm: '480px',
+      md: '800px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    fontFamily: {
+      'sans': ['Poppins', 'sans-serif'],
+      'mono': ['Poppins', 'monospace'],
+    },
+    colors: {
+      'primary-dark': '#231F20',
+      'primary-light': '#FFFFFF',
+      'secondary-light': '#F1F1F1',
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

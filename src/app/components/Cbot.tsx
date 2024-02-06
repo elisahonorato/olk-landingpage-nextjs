@@ -16,17 +16,13 @@ function MeshComponent(props: any) {
     const mesh = useRef<Mesh>(null!);
     const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb');
 
-    const tl = useRef(gsap.timeline({ paused: true }));
+    const tl = useRef(gsap.timeline());
 
     useFrame((state, delta) => {
-        console.log('Scroll offset:', scroll);
-
-    }
-    );
-
-      
-
-useLayoutEffect(()=> {
+        tl.current.seek(scroll.offset * tl.current.duration())
+      })
+    
+    useLayoutEffect(()=> {
         tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
     
         tl.current
@@ -52,7 +48,7 @@ useLayoutEffect(()=> {
         .to(mesh.current.rotation, {x: 0}, 20) 
         .to(mesh.current.position, {x: 0}, 20)   
     
-    },[])
+      },[])
     return (   
         <group {...props} dispose={null} ref={mesh}>
         <group position={[-0.258, 0, 0.501]}>
@@ -68,15 +64,7 @@ useLayoutEffect(()=> {
 useGLTF.preload('./models/cbot/cbot-transformed.glb') 
 export default function Cbot() {
     return (
-        <Canvas>
-            <ambientLight intensity={1.2} />
-            <spotLight position={[0, 25, 0]} angle={1.3} penumbra={1} castShadow intensity={2} shadow-bias={-0.0001} />
-            <Environment preset="warehouse" />
-                <MeshComponent position={[0, 0, 0]} scale={[10, 10, 10]} ></MeshComponent>
-                     
-         
- 
-        </Canvas>
+            <MeshComponent position={[0, 0, 0]} scale={[10, 10, 10]} ></MeshComponent>
 
        
     );

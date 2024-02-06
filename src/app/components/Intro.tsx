@@ -1,26 +1,33 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Image from "next/image";
 
 function Intro() {
     const textRef = useRef(null);
 
     useEffect(() => {
-        gsap.from(textRef.current, {
-      
-            y: 50,
-            duration: 1,
-            ease: "power3.out"
-        });
+        gsap.fromTo(
+            textRef.current,
+            { opacity: 0, y: 100 },
+            { opacity: 1, y: 0, duration: 1, delay: 1 }
+        );
     }, []);
 
     return (
-        <div className="intro-container flex flex-col justify-center items-center h-screen">
-            <p className="text-lg">Empowering construction project execution through automation, reducing reliance on manual tasks, and optimizing industry processes.</p>
-            <div ref={textRef} className="intro-text text-center">
-                <h1 className="text-3xl font-bold mb-4">Welcome to Obralink</h1>
-                <Image src="./images/logo_obralink.png" alt="Obralink Logo" className="w-24 h-auto mb-4" width={100} height={100} />
-                
+        <div className="page">
+            <div className="relative overflow-hidden w-full h-screen">
+                <video autoPlay muted loop className="absolute top-0 left-0 w-full h-full object-cover z-0">
+                    <source src="./videos/background-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
+                <div className="flex flex-col relative z-20">
+                    <img src="./images/logo_obralink.png" alt="Obralink Logo" className="w-60 h-auto mb-4" width={100} height={100} />
+                    <div className="text-start w-1/2 ml-7">
+                        <p ref={textRef} className="text-lg text-white">
+                            Empowering construction project execution through automation, reducing reliance on manual tasks, and optimizing industry processes.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

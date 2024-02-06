@@ -36,26 +36,28 @@ function ScrollSection() {
   }, []);
 
   return (
-    <section className="scroll-section-outer">
+    <section className="page-outer">
       {/* The section up act just as a wrapper. If the trigger (below) is the
       first jsx element in the component, you get an error on route change */}
 
       {/* The div below act just as a trigger. As the doc suggests, the trigger and 
       the animation should alway be two separated refs */}
       <div ref={triggerRef}>
-        <div ref={sectionRef} className="scroll-section-inner">
-          <div className="scroll-section">
-            <Intro/>
+        <div ref={sectionRef} className="page-inner">
+          <div className="page">
+            <h3>Automation of project control</h3>
+            
        
           </div>
-          <div className="scroll-section">
-            <h3>Section 2</h3>
+          <div className="page">
+            <h3>Concrete strength measurements</h3>
           </div>
-          <div className="scroll-section">
-            <h3>Section 3</h3>
+          <div className="page">
+            <h3>Connecting jobsite data with concrete providers</h3>
           </div>
-          <div className="scroll-section">
-            <h3>Section 4</h3>
+          <div className="page">
+            <h3>Monitoring of concrete curing with Cbot</h3>
+            
           </div>
         </div>
       </div>
