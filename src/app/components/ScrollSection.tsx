@@ -44,21 +44,42 @@ function ScrollSection() {
       the animation should alway be two separated refs */}
       <div ref={triggerRef}>
         <div ref={sectionRef} className="page-inner">
-          <div className="page">
+        <div className="page">
+          <div className="flex flex-row justify-between">
             <h3 className="mt-10 font-bold text-lg ml-10">Automation of project control</h3>
-            
-       
+            <div className="rounded-lg shadow-lg bg-primary-light p-4 mt-10" style={{ width: "50%" }}>
+              <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
+                <source src="./videos/screen/automated-progress.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
-          <div className="page">
+        </div>
+        <div className="page">
+          <div className="flex flex-row justify-between">
             <h3 className="mt-10 font-bold text-lg ml-10">Concrete strength measurements</h3>
+            <div className="rounded-lg shadow-lg bg-primary-light p-4 mt-10" style={{ width: "50%" }}>
+              <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
+                <source src="./videos/screen/planification.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
-          <div className="page">
+        </div>
+        <div className="page">
+          <div className="flex flex-row justify-between">
             <h3 className="mt-10 font-bold text-lg ml-10">Connecting jobsite data with concrete providers</h3>
+            <div className="rounded-lg shadow-lg bg-primary-light p-4 mt-10" style={{ width: "50%" }}>
+              <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
+                <source src="./videos/screen/resistencia.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
-          <div className="page">
+        </div>
+        <div className="page">
+          <div className="flex flex-row justify-center">
             <h3 className="mt-10 font-bold text-lg ml-10">Monitoring of concrete curing with Cbot</h3>
-            
+
           </div>
+        </div>
         </div>
       </div>
     </section>
