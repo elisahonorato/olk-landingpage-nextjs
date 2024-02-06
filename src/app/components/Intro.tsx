@@ -19,7 +19,7 @@ function Intro() {
             <p className="text-lg">Empowering construction project execution through automation, reducing reliance on manual tasks, and optimizing industry processes.</p>
             <div ref={textRef} className="intro-text text-center">
                 <h1 className="text-3xl font-bold mb-4">Welcome to Obralink</h1>
-                <Image src="./images/logo_obralink.png" alt="Obralink Logo" className="w-24 h-auto mb-4" />
+                <Image src="/images/logo_obralink.png" alt="Obralink Logo" className="w-24 h-auto mb-4" width={100} height={100} />
                 
             </div>
         </div>

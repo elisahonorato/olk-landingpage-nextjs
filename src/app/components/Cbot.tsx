@@ -14,7 +14,7 @@ import Hero from "./Hero";
 function MeshComponent(props: any) {
     const scroll = useScroll();
     const mesh = useRef<Mesh>(null!);
-    const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb')
+    const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb');
 
     const tl = useRef(gsap.timeline({ paused: true }));
 
@@ -56,30 +56,26 @@ useLayoutEffect(()=> {
     return (   
         <group {...props} dispose={null} ref={mesh}>
         <group position={[-0.258, 0, 0.501]}>
-          <mesh geometry={nodes.Body1127.geometry} material={materials.PaletteMaterial001} />
-          <mesh geometry={nodes.Body1127_1.geometry} material={materials.logo_obralink} />
+          <mesh geometry={(nodes.Body1127 as THREE.Mesh).geometry} material={materials.PaletteMaterial001} />
+          <mesh geometry={(nodes.Body1127_1 as THREE.Mesh).geometry} material={materials.logo_obralink} />
         </group>
-        <mesh geometry={nodes.cuerpo.geometry} material={materials.PaletteMaterial002} position={[-0.258, 0, 0.501]} />
-        <mesh geometry={nodes.cuerpo028.geometry} material={materials.PaletteMaterial003} position={[-0.258, 0, 0.501]} />
-        <mesh geometry={nodes.cuerpo029.geometry} material={materials.PaletteMaterial004} position={[-0.258, 0, 0.501]} />
+        <mesh geometry={(nodes.cuerpo as THREE.Mesh).geometry} material={materials.PaletteMaterial002} position={[-0.258, 0, 0.501]} />
+        <mesh geometry={(nodes.cuerpo028 as THREE.Mesh).geometry} material={materials.PaletteMaterial003} position={[-0.258, 0, 0.501]} />
+        <mesh geometry={(nodes.cuerpo029 as THREE.Mesh).geometry} material={materials.PaletteMaterial004} position={[-0.258, 0, 0.501]} />
       </group>
     );
 }
-useGLTF.preload('./models/cbot/cbot-transformed.glb')
+useGLTF.preload('./models/cbot/cbot-transformed.glb') 
 export default function Cbot() {
     return (
         <Canvas>
             <ambientLight intensity={1.2} />
             <spotLight position={[0, 25, 0]} angle={1.3} penumbra={1} castShadow intensity={2} shadow-bias={-0.0001} />
             <Environment preset="warehouse" />
-
-
-            <ScrollControls pages={6} damping={0.1}>
                 <MeshComponent position={[0, 0, 0]} scale={[10, 10, 10]} ></MeshComponent>
-                <Scroll html style={{width: '100%'}}></Scroll>            
+                     
          
-            </ScrollControls>
-            
+ 
         </Canvas>
 
        
