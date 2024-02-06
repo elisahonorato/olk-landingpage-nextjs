@@ -45,18 +45,18 @@ function ScrollSection() {
       <div ref={triggerRef}>
         <div ref={sectionRef} className="page-inner">
           <div className="page">
-            <h3>Automation of project control</h3>
+            <h3 className="mt-10 font-bold text-lg ml-10">Automation of project control</h3>
             
        
           </div>
           <div className="page">
-            <h3>Concrete strength measurements</h3>
+            <h3 className="mt-10 font-bold text-lg ml-10">Concrete strength measurements</h3>
           </div>
           <div className="page">
-            <h3>Connecting jobsite data with concrete providers</h3>
+            <h3 className="mt-10 font-bold text-lg ml-10">Connecting jobsite data with concrete providers</h3>
           </div>
           <div className="page">
-            <h3>Monitoring of concrete curing with Cbot</h3>
+            <h3 className="mt-10 font-bold text-lg ml-10">Monitoring of concrete curing with Cbot</h3>
             
           </div>
         </div>
