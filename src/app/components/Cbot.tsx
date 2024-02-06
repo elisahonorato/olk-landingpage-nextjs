@@ -3,17 +3,13 @@
 import { useLayoutEffect, useRef } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useScroll, ScrollControls, Scroll} from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh } from "three";
 import gsap from "gsap";
 import { Environment } from "@react-three/drei";
-extend({ GLTFLoader });
-extend({ OrbitControls });
 
 
 import Hero from "./Hero";
-import { ThemeProvider } from '@mui/material/styles';
-import theme from "./theme/theme";
+
 
 function MeshComponent(props) {
     const scroll = useScroll();
