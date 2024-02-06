@@ -11,7 +11,7 @@ import { Environment } from "@react-three/drei";
 import Hero from "./Hero";
 
 
-function MeshComponent(props) {
+function MeshComponent(props: any) {
     const scroll = useScroll();
     const mesh = useRef<Mesh>(null!);
     const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb')
