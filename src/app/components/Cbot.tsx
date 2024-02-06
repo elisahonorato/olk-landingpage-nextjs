@@ -65,8 +65,6 @@ function MeshComponent(props: any) {
 export default function Cbot() {
     return (
             <MeshComponent position={[0, 0, 0]} scale={[10, 10, 10]} ></MeshComponent>
-
-       
     );
 }
 useGLTF.preload('./models/cbot/cbot-transformed.glb') 

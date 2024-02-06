@@ -6,6 +6,7 @@ import Cbot from "./components/Cbot";
 import { Canvas } from "@react-three/fiber";
 import {RoundedBox, ScrollControls, Scroll, Environment,Sparkles,Backdrop,Float, Ring} from '@react-three/drei'
 import Intro from "./components/Intro";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
 
 
     </Canvas>
+    <Footer/>
         
 
     </>
