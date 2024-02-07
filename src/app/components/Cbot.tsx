@@ -9,7 +9,6 @@ import { Environment } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 
-import Hero from "./Hero";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -33,7 +32,7 @@ export default function Cbot(props: any) {
 
     function playAnimation() {
       timeline.to(mesh.current.rotation, {
-        y: Math.PI * 0.9,
+        y: Math.PI * 0.1,
         duration: 4,
         ease: "none"
         
