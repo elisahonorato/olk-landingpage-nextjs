@@ -6,7 +6,6 @@ import Intro from "./Intro";
 function ScrollSection() {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
-  const textRefs = [useRef(null), useRef(null), useRef(null)]; // Array de referencias para los elementos de texto
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -14,39 +13,23 @@ function ScrollSection() {
     const pin = gsap.fromTo(
       sectionRef.current,
       {
-        translateX: 0,
+        opacity: 0,
       },
       {
-        translateX: "-300vw",
-        ease: "none",
+        opacity: 1,
+        scale: 1,
         duration: 1,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
           end: "2000 top",
           scrub: 0.6,
-          pin: true,
+
         },
       }
     );
 
-    // Iterar sobre las referencias de texto y aplicar ScrollTrigger a cada una
-    textRefs.forEach((textRef, index) => {
-      ScrollTrigger.create({
-        trigger: textRef.current,
-        start: "top 80%",
-        onEnter: () => {
-          gsap.fromTo(
-            textRef.current,
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, delay: index * 0.5 } // Ajustar el retraso según el índice
-          );
-        },
-        onLeaveBack: () => {
-          gsap.to(textRef.current, { opacity: 0, y: 50, duration: 1 });
-        }
-      });
-    });
 
     return () => {
       pin.kill();
@@ -54,9 +37,9 @@ function ScrollSection() {
   }, []);
 
   return (
-    <section className="page-outer">
+    <section>
       <div ref={triggerRef}>
-        <div ref={sectionRef} className="page-inner">
+        <div ref={sectionRef}>
           <div className="page">
             <div className="flex flex-col justify-between ml-10">
               <h3 className="mt-10 font-bold text-lg">Automation of project control</h3>

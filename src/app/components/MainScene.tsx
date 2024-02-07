@@ -10,10 +10,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 
 import Hero from "./Hero";
+import Intro from "./Intro";
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function Cbot(props: any) {
+export default function MainScene(props: any) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mesh = useRef<Mesh>(null!);
   const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb');
@@ -42,7 +43,8 @@ export default function Cbot(props: any) {
   }, []);
 
   return (
-    <Canvas className="cbot" ref={canvasRef} style={{height: "100vh", width: "100vw"}}>
+    <>
+    <Canvas className="cbot" ref={canvasRef} style={{height: "100vh", width: "100vw", position: "absolute"}}>
       {/* Asignar una referencia al canvas */}
       <group {...props} dispose={null} ref={mesh} position={[0, 0, 0]} scale={[7, 7, 7]}>
         <group position={[-0.258, 0, 0.501]}>
@@ -56,8 +58,11 @@ export default function Cbot(props: any) {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       <Environment preset="sunset" />
+      
 
       
     </Canvas>
+    <Intro  />
+    </>
   );
 }
