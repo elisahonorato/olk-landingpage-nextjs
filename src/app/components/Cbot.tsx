@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Cbot(props: any) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mesh = useRef<Mesh>(null!);
-  const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb');
+  const { nodes, materials } = useGLTF('/models/cbot/cbot-transformed.glb');
 
   useEffect(() => {
     // Configurar la animación con ScrollTrigger para que se active dos veces

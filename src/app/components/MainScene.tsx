@@ -1,5 +1,4 @@
 "use client";
-
 import { useLayoutEffect, useRef, useEffect } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useScroll, ScrollControls, Scroll} from "@react-three/drei";
@@ -17,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function MainScene(props: any) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mesh = useRef<Mesh>(null!);
-  const { nodes, materials } = useGLTF('./models/cbot/cbot-transformed.glb');
+  const { nodes, materials } = useGLTF('/models/cbot/cbot-transformed.glb');
 
   useEffect(() => {
     // Configurar la animación con ScrollTrigger para que se active dos veces
