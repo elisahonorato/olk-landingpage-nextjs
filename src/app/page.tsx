@@ -2,19 +2,31 @@
 'use client'
 import ScrollSection from "./components/ScrollSection";
 import Cbot from "./components/Cbot";
+import MainScene from "./components/MainScene";
 import { Canvas } from "@react-three/fiber";
 import {RoundedBox, ScrollControls, Scroll, Environment,Sparkles,Backdrop,Float, Ring} from '@react-three/drei'
 import Intro from "./components/Intro";
 import Footer from "./components/Footer";
-import MainScene from "./components/MainScene";
+
+import { useRef } from "react";
 
 export default function Home() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   return (
     
     <>
-    <MainScene/>
+    <div style={{height: "100vh", width: "100vw"}}>
+      <Intro/>
+      <Canvas className="cbot" ref={canvasRef}>
+        <MainScene/>
+      </Canvas>
+    </div>
+
     <ScrollSection/>
-    <Cbot/>
+    <Canvas>
+      <Cbot/>
+    </Canvas>
+   
     <Footer/>
         
 

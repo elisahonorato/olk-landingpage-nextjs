@@ -6,6 +6,8 @@ import { Mesh } from "three";
 import gsap from "gsap";
 import { Environment } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import dynamic from 'next/dynamic';
+
 
 
 import Hero from "./Hero";
@@ -13,10 +15,11 @@ import Intro from "./Intro";
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function MainScene(props: any) {
+export default function MainScene({ ...props } : any) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mesh = useRef<Mesh>(null!);
-  const { nodes, materials } = useGLTF('/models/cbot/cbot-transformed.glb');
+  const { nodes, materials } = useGLTF("./models/cbot/cbot-transformed.glb") as unknown as any;
+
 
   useEffect(() => {
     // Configurar la animación con ScrollTrigger para que se active dos veces
@@ -39,12 +42,10 @@ export default function MainScene(props: any) {
         
       });
     }
-  }, []);
+  }, [mesh]);
 
   return (
     <>
-    <Canvas className="cbot" ref={canvasRef} style={{height: "100vh", width: "100vw", position: "absolute"}}>
-      {/* Asignar una referencia al canvas */}
       <group {...props} dispose={null} ref={mesh} position={[0, 0, 0]} scale={[7, 7, 7]}>
         <group position={[-0.258, 0, 0.501]}>
           <mesh geometry={(nodes.Body1127 as THREE.Mesh).geometry} material={materials.PaletteMaterial001} />
@@ -57,11 +58,7 @@ export default function MainScene(props: any) {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       <Environment preset="sunset" />
-      
 
-      
-    </Canvas>
-    <Intro  />
     </>
   );
 }

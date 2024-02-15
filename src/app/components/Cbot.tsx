@@ -1,5 +1,4 @@
 "use client";
-
 import { useLayoutEffect, useRef, useEffect } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useScroll, ScrollControls, Scroll} from "@react-three/drei";
@@ -7,15 +6,20 @@ import { Mesh } from "three";
 import gsap from "gsap";
 import { Environment } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import dynamic from 'next/dynamic';
 
 
+
+import Hero from "./Hero";
+import Intro from "./Intro";
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function Cbot(props: any) {
+export default function Cbot({ ...props } : any) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mesh = useRef<Mesh>(null!);
-  const { nodes, materials } = useGLTF('/models/cbot/cbot-transformed.glb');
+  const { nodes, materials } = useGLTF("./models/cbot/cbot-transformed.glb") as unknown as any;
+
 
   useEffect(() => {
     // Configurar la animación con ScrollTrigger para que se active dos veces
@@ -32,17 +36,16 @@ export default function Cbot(props: any) {
 
     function playAnimation() {
       timeline.to(mesh.current.rotation, {
-        y: Math.PI * 0.1,
+        y: Math.PI * 0.9,
         duration: 4,
         ease: "none"
         
       });
     }
-  }, []);
+  }, [mesh]);
 
   return (
-    <Canvas className="cbot" ref={canvasRef} style={{height: "100vh", width: "100vw"}}>
-      {/* Asignar una referencia al canvas */}
+    <>
       <group {...props} dispose={null} ref={mesh} position={[0, 0, 0]} scale={[7, 7, 7]}>
         <group position={[-0.258, 0, 0.501]}>
           <mesh geometry={(nodes.Body1127 as THREE.Mesh).geometry} material={materials.PaletteMaterial001} />
@@ -56,7 +59,6 @@ export default function Cbot(props: any) {
       <pointLight position={[10, 10, 10]} />
       <Environment preset="sunset" />
 
-      
-    </Canvas>
+    </>
   );
 }
