@@ -6,7 +6,6 @@ import { Mesh } from "three";
 import gsap from "gsap";
 import { Environment } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import dynamic from 'next/dynamic';
 
 
 
