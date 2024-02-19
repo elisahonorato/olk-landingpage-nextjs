@@ -15,8 +15,6 @@ function Intro() {
     return (
         <div className="page">
             <div className="relative overflow-hidden w-full h-screen">
-
-
                 <div className="flex flex-col relative z-20 ml-10">
                     <img src="./images/logo_obralink.png" alt="Obralink Logo" className="w-60 h-auto mb-4" width={100} height={100} />
                     <div className="text-start w-1/3">
