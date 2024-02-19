@@ -51,18 +51,18 @@ function ScrollSection() {
                 </div>
                 <div className="w-1/2">
                   <h2 className="mb-2 font-semibold text-gray-900 dark:text-white text-md">Automatic measurement of construction
-progress, as well as planning and scheduling</h2>
+                    progress, as well as planning and scheduling</h2>
                   <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 mt-10">
                     <li>
-                    Without workers
-intervention
+                      Without workers
+                      intervention
                     </li>
                     <li>
-                    BIM enviroment
+                      BIM enviroment
                     </li>
                     <li>
-                    Automated quantity
-calculation
+                      Automated quantity
+                      calculation
                     </li>
                   </ul>
                 </div>
