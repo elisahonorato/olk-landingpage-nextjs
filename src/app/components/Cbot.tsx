@@ -25,7 +25,6 @@ export default function Cbot({ onUpdateRotation, ...props }) {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        markers: true,
         onUpdate: () => onUpdateRotation(mesh.current.rotation.toArray()) // Actualiza la rotación durante el scroll
       }
     });
