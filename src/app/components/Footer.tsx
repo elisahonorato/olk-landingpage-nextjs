@@ -4,9 +4,37 @@ import { gsap } from "gsap";
 function Footer() {
     const inputClass = "lg:text-2xl md:text-md text-primary-dark font-light bg-primary-yellow ring-0 focus:ring-0 focus:ring-primary-dark focus:ring-opacity-50 focus:outline-none text-primary-dark placeholder-primary-dark" ;
     const lineClass = "w-48 h-0.1";
+    useEffect(() => {
+        gsap.to(".footer", {
+            scrollTrigger: {
+                trigger: ".footer",
+                start: "top 80%",
+                end: "top 50%",
+                scrub: 1,
+                toggleActions: "play none none reverse",
+                onUpdate: (self) => {
+                    if (self.direction === -1) {
+                        gsap.to(".footer button", {
+                            background: "rgba(0, 0, 0, 1)",
+                            duration: 0.5,
+                            ease: "power2.inOut"
+                        });
+                    }
+                    else {
+                        gsap.to(".footer button", {
+                            background: "rgba(50, 50, 50, 1)",
+                            duration: 0.5,
+                            ease: "power2.inOut"
+                        });
+                    }
+                }
+            },
+        });
+    }, []);
 
+ 
     return (
-        <div>
+        <div className="footer">
             <div className="flex mt-20">
                 <div className="flex bg-primary-dark text-primary-light page-content">
                     <h1 className="text-4xl">Interesado en trabajar con nosotros?</h1>

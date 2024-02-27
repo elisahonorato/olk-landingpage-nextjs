@@ -14,16 +14,15 @@ function Intro() {
 
     return (
         <div className="page-content">
-            <div className="absolute top-0 left-0 w-full h-screen">
+            <div className="absolute top-0 left-0 w-full h-screen z-0">
                 <video autoPlay muted loop className="w-full h-screen object-cover" >
                     <source src="./videos/background-video.mp4" type="video/mp4" />
                 </video>
             </div>
             <div className="relative overflow-hidden w-full h-screen">
                 <div className="flex flex-col relative z-20 ml-10">
-                    <img src="./images/logo_obralink.png" alt="Obralink Logo" className="w-60 h-auto mb-4" width={100} height={100} />
                     <div className="text-start w-1/3">
-                        <p ref={textRef} className="text-lg text-white font-bold">
+                        <p ref={textRef} className="text-lg text-white font-bold description-text">
                             Empowering construction project execution through automation, reducing reliance on manual tasks, and optimizing industry processes.
                         </p>
                     </div>

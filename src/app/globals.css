@@ -16,5 +16,24 @@ body {
 }
 
 .page-content {
-  @apply justify-between lg:px-40 md:px-20 sm:px-5 w-full lg:py-24 md:py-16 sm:py-8;
+  @apply lg:px-40 md:px-20 sm:px-5 w-full lg:py-24 md:py-16 sm:py-8;
 }
+.page-content-x {
+  @apply lg:px-40 md:px-20 sm:px-5 w-full;
+}
+.page-content-y {
+  @apply w-full lg:py-24 md:py-16 sm:py-8;
+}
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+

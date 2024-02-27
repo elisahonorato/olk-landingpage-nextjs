@@ -1,77 +1,96 @@
 'use client';
 import ScrollSection from "./components/ScrollSection";
 import Cbot from "./components/Cbot";
+import Navbar from "./components/Navbar";
 import { Canvas } from "@react-three/fiber";
 import Intro from "./components/Intro";
 import Footer from "./components/Footer";
 import { useRef, useState, useEffect } from "react";
+import { Parallax } from "./components/Parallax";
 
 export default function Home() {
-  const [meshRotation, setMeshRotation] = useState([0, 0, 0]);
+  const [meshRotation, setMeshRotation] = useState(0);
 
   useEffect(() => {
-    const [x, y, z] = meshRotation;
-    const text = document.querySelector("#cbot-text");
-    if (text) {
-      text.textContent = y.toFixed(2);
+    console.log(meshRotation);
+    if (meshRotation === 1) {
+      document.querySelector(".cbot-text-1")?.classList.remove("hidden");
+      document.querySelector(".cbot-text-2")?.classList.add("hidden");
+      document.querySelector(".cbot-text-3")?.classList.add("hidden");
+    }
+    if (meshRotation === 2) {
+      document.querySelector(".cbot-text-2")?.classList.remove("hidden");
+      document.querySelector(".cbot-text-1")?.classList.add("hidden");
+      document.querySelector(".cbot-text-3")?.classList.add("hidden");
+    }
+    if (meshRotation === 3) {
+      document.querySelector(".cbot-text-3")?.classList.remove("hidden");
+      document.querySelector(".cbot-text-1")?.classList.add("hidden");
+      document.querySelector(".cbot-text-2")?.classList.add("hidden");
     }
 
-    const text1 = document.querySelector(".cbot-text-1");
-    const text2 = document.querySelector(".cbot-text-2");
-    const text3 = document.querySelector(".cbot-text-3");
-
-    if (text1 && text2 && text3) {
-      if (y > -0.5 && y <= 0.5) {
-        text1.classList.replace("hidden", "block");
-      } else {
-        text1.classList.replace("block", "hidden");
-      }
-
-      if (y > 0.5 && y <= 1) {
-        text2.classList.replace("hidden", "block");
-      } else {
-        text2.classList.replace("block", "hidden");
-      }
-
-      if (y > 1) {
-        text3.classList.replace("hidden", "block");
-      } else {
-        text3.classList.replace("block", "hidden");
-      }
-    }
   }, [meshRotation]);
 
   return (
     <div className="h-screen w-screen">
+      <Navbar />
       <Intro />
       <ScrollSection />
-      <div className="relative w-full h-screen page-content">
-        <div className="absolute top-0 left-0 w-full h-screen">
-          <Canvas className="cbot absolute" style={{ width: "100vw" }}>
+      
+        <div className="relative w-full h-screen">
+
+   
+            <Parallax speed={0} >
+              <div className="absolute w-full h-full bg-cbot page-content" >
+              <div className="text-start absolute w-full cbot-text-1 hidden">
+                <div className="flex flex-col gap-4 w-1/3">
+                  <h1 className="text-2xl text-white font-bold">
+                    CiBots
+                  </h1>
+                  <p>
+                    Los CiBots son dispositivos de monitoreo de proyectos de construcción que se encargan de recopilar datos en tiempo real sobre el avance de la obra. Estos dispositivos están equipados con sensores de última tecnología que permiten medir el avance de la obra, la calidad del aire, la temperatura, la humedad y otros factores que pueden afectar el desarrollo de la construcción.
+                  </p>
+                </div>
+              </div>
+              <div className="text-start absolute cbot-text-2 hidden w-1/3 right-2 ">
+                <div className="flex flex-col gap-4">
+                  <h1 className="text-2xl text-white font-bold">
+                    Software
+                  </h1>
+                  <p>
+                    Los CiBots son dispositivos de monitoreo de proyectos de construcción que se encargan de recopilar datos en tiempo real sobre el avance de la obra. Estos dispositivos están equipados con sensores de última tecnología que permiten medir el avance de la obra, la calidad del aire, la temperatura, la humedad y otros factores que pueden afectar el desarrollo de la construcción.
+                  </p>
+                </div>
+              </div>
+              <div className=" w-full cbot-text-3 hidden text-bottom mt-10">
+                <div className="flex flex-col gap-4 w-1/3">
+                  <h1 className="text-2xl text-white font-bold">
+                    CiBots
+                  </h1>
+                  <p>
+                    Los CiBots son dispositivos de monitoreo de proyectos de construcción que se encargan de recopilar datos en tiempo real sobre el avance de la obra. Estos dispositivos están equipados con sensores de última tecnología que permiten medir el avance de la obra, la calidad del aire, la temperatura, la humedad y otros factores que pueden afectar el desarrollo de la construcción.
+                  </p>
+                </div>
+              </div>
+              </div>
+            </Parallax>
+
+
+     
+          <Parallax speed={-0} >
+
+          <Canvas className="cbot absolute" style={{ zIndex: 1, height: "100vh", width: "100vw" }}>
             <Cbot onUpdateRotation={setMeshRotation} />
+            
           </Canvas>
+          
+          </Parallax>
         </div>
-        <div className="relative overflow-hidden w-full h-screen">
-          <div className="flex flex-col relative z-20 ml-10">
-            <p id="cbot-text"></p>
-            <div className="text-start w-full cbot-text-1 hidden">
-              <p className="text-lg text-white font-bold">
-                Text 1
-              </p>
-            </div>
-            <div className="text-end w-full cbot-text-2 hidden">
-              <p className="text-lg text-white font-bold">
-                Text 2
-              </p>
-            </div>
-            <div className="text-start w-full cbot-text-3 hidden">
-              <p className="text-lg text-white font-bold">
-                Text 3
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
+
+
+
+
       <Footer />
     </div>
   );
