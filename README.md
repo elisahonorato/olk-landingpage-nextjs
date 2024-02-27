@@ -1,18 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Stack
 
-First, run the development server:
+- [Lenis](https://github.com/darkroomengineering/lenis) // in this case we're using the local /bundled version, instead of the npm package.
+- [Next.js](https://nextjs.org/)
+- [Three.js](https://threejs.org/)
+- [@react-three/drei](https://github.com/pmndrs/drei)
+- [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
+- [GSAP](https://greensock.com/gsap/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
