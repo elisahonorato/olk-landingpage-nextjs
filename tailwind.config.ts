@@ -21,6 +21,7 @@ const config: Config = {
       'primary-dark': '#231F20',
       'primary-light': '#FFFFFF',
       'secondary-light': '#F1F1F1',
+      'primary-yellow': '#FCC109',
     },
     extend: {
       backgroundImage: {

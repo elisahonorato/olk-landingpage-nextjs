@@ -15,57 +15,6 @@ body {
   
 }
 
-.hero__header {
-  height: 100vh;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.hero__header h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: var(--headlineBig);
-  color: var(--primaryTextColor);
-}
-
-.hero__header h2 {
-  letter-spacing: var(--headlineSmall);
-  font-size: var(--headlineSmall);
-  text-transform: uppercase;
-  color: var(--primaryColor);
-}
-
-.page-outer {
-  overflow: hidden;
-}
-
-.page-inner {
-  height: 100vh;
-  width: 400vw;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-.page {
-  @apply mx-1;
-  height: 100vh;
-  width: 100vw;
-
-
-}
-
-.footer {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer span {
-  font-size: var(--headlineBig);
-  color: var(--primaryTextColor);
+.page-content {
+  @apply justify-between lg:px-40 md:px-20 sm:px-5 w-full lg:py-24 md:py-16 sm:py-8;
 }

@@ -1,144 +1,121 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { use, useState, useEffect } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Intro from "./Intro";
+import { Scroll } from "@react-three/drei";
 
-function ScrollSection() {
-  const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
 
+interface SectionInfo {
+  title: string;
+  content: string;
+  videoUrl: string;
+}
+
+const ScrollSection = () => {
   gsap.registerPlugin(ScrollTrigger);
+  const sectionInfo: SectionInfo[] = [
+    {
+      title: "Terminaciones",
+      content: "Automatización de la medición de avance de obra, a través de la detección de cambios en el modelo BIM y la comparación con el avance real de la obra.",
+      videoUrl: "./videos/screen/automated-progress.mp4"
+    },
+    {
+      title: "Planiﬁcación",
+      content: "Planificación de la obra a través de la generación de un modelo BIM, el cual permite la detección de interferencias y la generación de un programa de obra.",
+      videoUrl: "./videos/screen/planification.mp4"
+    },
+    {
+      title: "Resistencia",
+      content: "Medición de la resistencia del concreto, a través de la detección de cambios en el modelo BIM y la comparación con el avance real de la obra.",
+      videoUrl: "./videos/screen/resistencia.mp4"
 
+    }
+  ];
+
+  // Estado para controlar la sección activa, se inicia en la sección 0
+  const [activeSection, setActiveSection] = useState<number>(0);
   useEffect(() => {
-    const pin = gsap.fromTo(
-      sectionRef.current,
-      {
-        opacity: 0,
-      },
+    // Animación para la sección de "Principales Servicios"
+    gsap.fromTo(
+      ".main-text",
+      { opacity: 0, x: 100 },
       {
         opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: "power3.out",
+        x: 0,
+        duration: 2,
+        ease: "power4.out",
         scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: "2000 top",
-          scrub: 0.6,
-
-        },
+          trigger: ".services-scroll",
+          start: "top 80%",
+          end: "top 50%",
+          scrub: 1,
+          toggleActions: "play none none reverse"
+        }
       }
     );
+  }, []);      
+      
+  useEffect(() => {
+
+    gsap.fromTo(
+      `.text-section-${activeSection}`,
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 0, duration: 1, delay: 1 }
+    );
+    gsap.fromTo(
+      `.video-section-${activeSection}`,
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 0, duration: 1, delay: 0 }
+    );
+
+  }
+    , [activeSection]);
 
 
-    return () => {
-      pin.kill();
-    };
-  }, []);
 
   return (
-    <section>
-      <div ref={triggerRef}>
-        <div ref={sectionRef}>
-          <div className="page">
-            <div className="flex flex-col justify-between ml-10">
-              <h3 className="mt-10 font-bold text-lg">Automation of project control</h3>
-              <div className="flex flex-row mt-10 gap-5">
-                <div className="rounded-lg shadow-lg bg-primary-light p-4" style={{ width: "50%" }}>
+    <div className="flex flex-col gap-4 services-scroll page-content">
+      <div className="pt-10">
+        <h1 className="text-2xl font-bold main-text">Medición de Avance</h1>
+      </div>
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-row gap-2 justify-start">
+          {sectionInfo.map((section, index) => (
+            <div
+              key={index}
+              className="flex flex-col gap-2 cursor-pointer"
+              onClick={() => setActiveSection(index)}
+            >
+              <h1 className={`${activeSection === index ? "font-bold underline " : "font-normal opacity-50"
+                } `}>{section.title}</h1>
+            </div>
+          ))}
+        </div>
+        <div>
+          {sectionInfo.map((section, index) => (
+            <div
+              key={index}
+              className={`flex flex-row gap-4 justify-between h-full w-full bg-gray-100 ${activeSection === index ? "" : "hidden"
+                }`}
+            >
+              
+              {activeSection === index && (
+                <div className={`video-section-${index} rounded-lg shadow-lg bg-primary-light p-4 h-full`}>
                   <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
-                    <source src="./videos/screen/automated-progress.mp4" type="video/mp4" />
+                    <source src={section.videoUrl} type="video/mp4" />
                   </video>
                 </div>
-                <div className="w-1/2">
-                  <h2 className="mb-2 font-semibold text-gray-900 dark:text-white text-md">Automatic measurement of construction
-                    progress, as well as planning and scheduling</h2>
-                  <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 mt-10">
-                    <li>
-                      Without workers
-                      intervention
-                    </li>
-                    <li>
-                      BIM enviroment
-                    </li>
-                    <li>
-                      Automated quantity
-                      calculation
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+                
+              )}
+              <p className={`text-section-${index} text-lg`}>{section.content}</p>
 
-          <div className="page">
-            <div className="flex flex-col justify-between ml-10">
-              <h3 className="mt-10 font-bold text-lg">Concrete strength measurements</h3>
-              <div className="flex flex-row mt-10 gap-5">
-                <div className="rounded-lg shadow-lg bg-primary-light p-4" style={{ width: "50%" }}>
-                  <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
-                    <source src="./videos/screen/planification.mp4" type="video/mp4" />
-                  </video>
-                </div>
-                <div className="w-1/2">
-                  <h2 className="mb-2 font-semibold text-gray-900 dark:text-white text-md">Once concrete is detected, ObraLink
-                    measures the strength in real-time without
-                    the need for worker intervention</h2>
-                  <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 mt-10">
-                    <li>
-                      It accelerates
-                      construction
-                      processes
-                    </li>
-                    <li>
-                      Concrete
-                      strength every
-                      20 mins
-                    </li>
-                    <li>
-                      Data displayed in
-                      a BIM context
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
-
-          <div className="page">
-            <div className="flex flex-col justify-between ml-10">
-              <h1 className="mt-10 font-bold text-lg">Concrete strength measurements</h1>
-              <div className="flex flex-row mt-10 gap-5">
-                <div className="rounded-lg shadow-lg bg-primary-light p-4" style={{ width: "50%" }}>
-                  <video autoPlay muted loop width="100%" height="auto" className="rounded-t-lg cover">
-                    <source src="./videos/screen/planification.mp4" type="video/mp4" />
-                  </video>
-                </div>
-                <div className="w-1/2">
-                  <h2 className="mb-2 font-semibold text-gray-900 dark:text-white text-md">Key project data is automatically shared
-                    with concrete providers to enhance
-                    oversight and optimize concrete delivery</h2>
-                  <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 mt-10">
-                    <li>
-                      Live Concrete
-                      Pouring Updates
-                    </li>
-                    <li>
-                      Continuous Monitoring of
-                      Concrete Strength and Behavior
-                    </li>
-                    <li>
-                      Predictive Analysis for
-                      Concrete Deliveries
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </section>
+
+    </div>
+
   );
-}
+};
 
 export default ScrollSection;

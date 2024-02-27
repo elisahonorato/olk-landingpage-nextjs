@@ -13,6 +13,8 @@
     "@mui/material-nextjs": "^5.15.7",
     "@react-three/drei": "^9.97.1",
     "@react-three/fiber": "^8.15.16",
+    "@studio-freight/lenis": "^1.0.39",
+    "@studio-freight/react-lenis": "^0.0.45",
     "@types/three": "^0.161.2",
     "drei": "^2.2.21",
     "gltf-loader": "^1.0.0",
